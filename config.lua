@@ -1,3 +1,4 @@
+-- bigzhu say: /Users/bigzhu/.local/share/lunarvim
 --[[
 lvim is the global options object
 
@@ -9,6 +10,7 @@ an executable
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
+lvim.whichwrap = "B,S"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
@@ -151,6 +153,8 @@ lvim.builtin.treesitter.highlight.enabled = true
 --       cmd = "TroubleToggle",
 --     },
 -- }
+local home = os.getenv("HOME")
+package.path = home .. "/.config/lvim/?.lua;" .. package.path
 require("plugins")
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
@@ -165,4 +169,5 @@ require("plugins")
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 require("markdown")
+require("options")
 -- })
