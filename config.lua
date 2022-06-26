@@ -20,7 +20,7 @@ lvim.colorscheme = "onedarker"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -63,8 +63,16 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
-
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.builtin.nvimtree.setup.open_on_tab = true
+lvim.builtin.nvimtree.setup.open_on_setup = true
+lvim.builtin.nvimtree.setup.view.mappings = {
+  list = {
+    { key = "l", action = "tabnew" },
+    { key = "h", action = "tabnew" },
+    { key = "t", action = "tabnew" },
+  },
+}
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
@@ -83,6 +91,9 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+
+
 
 -- generic LSP settings
 
@@ -171,3 +182,7 @@ require("plugins")
 require("markdown")
 require("options")
 -- })
+
+
+-- 太烦了,影响操作,关闭
+--lvim.builtin.which_key.active = false
