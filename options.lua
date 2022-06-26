@@ -17,7 +17,8 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
 --无限回滚
-vim.opt.undodir = "~/.vimundodir"
+
+vim.opt.undodir = os.getenv("HOME") .. "/.vimundodir"
 vim.bo.undofile = true
 
 -- need unstall which-key https://github.com/folke/which-key.nvim
