@@ -99,7 +99,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- generic LSP settings
 
 -- ---@usage disable automatic installation of servers
--- lvim.lsp.automatic_servers_installation = false
+lvim.lsp.automatic_servers_installation = true
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
@@ -182,7 +182,6 @@ require("markdown")
 require("options")
 -- 加载 riverpod 的 snippets
 require("luasnip.loaders.from_vscode").lazy_load()
-
 -- 太烦了,影响操作,关闭
 -- 一个关不了的大爷, 关了 map 映射报错
 --lvim.builtin.which_key.active = false
