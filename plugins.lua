@@ -3,31 +3,26 @@ lvim.plugins = {
   --  "simrat39/symbols-outline.nvim", -- 显示代码结构
   --  cmd = "SymbolsOutline",
   --},
+  -- 更好的显示代码结构,并且自动打开
   { 'stevearc/aerial.nvim',
     config = function() require('aerial').setup(
         {
-          on_attach = function(bufnr)
-            -- Toggle the aerial window with <leader>a
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
-            -- Jump forwards/backwards with '{' and '}'
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
-            -- Jump up the tree with '[[' or ']]'
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
-          end
+          open_automatic = true,
+          backends = { "treesitter", "lsp", "markdown" },
         }
       )
     end
   },
   { "bigzhu/flutter-riverpod-snippets" },
   { "ellisonleao/gruvbox.nvim" }, -- themes
-  { "vimwiki/vimwiki" },
+  { "bigzhu/vimwiki" },
   --{ "renerocksai/telekasten.nvim" },
   --{ 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim',
   --  config = function() require('flutter-tools').setup() end
   --},
 }
-require("lspconfig").vimls.setup {
-  on_attach = require("aerial").on_attach,
-}
+
+--显示代码结构要 attach 到 lsp 上
+lvim.lsp.on_attach_callback = function(client, bufnr)
+  require("aerial").on_attach(client, bufnr)
+end
