@@ -1,4 +1,3 @@
--- bigzhu say: /Users/bigzhu/.local/share/lunarvim
 --[[
 lvim is the global options object
 
@@ -10,17 +9,30 @@ an executable
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
-lvim.whichwrap = "B,S"
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "gruvbox"
+lvim.colorscheme = "onedarker"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
--- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- 关闭愚蠢的自动移到上下行
+vim.opt.whichwrap = ""
+--fold
+vim.opt.foldmethod = "indent"
+--disable auto fold
+vim.opt.foldlevel = 20
+--" 输入tab 转为2个空格
+vim.opt.expandtab = true
+-- 设置制表符空格数
+vim.opt.softtabstop = 2
+-- 设置缩进空格数
+vim.opt.shiftwidth = 2
+-- avoid spelllang error tag chinese tag
+vim.opt.spelllang = { "en", "cjk" }
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -64,8 +76,6 @@ lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
---lvim.builtin.nvimtree.setup.open_on_tab = true
-lvim.builtin.nvimtree.setup.open_on_setup = true
 lvim.builtin.nvimtree.setup.view.mappings = {
   list = {
     { key = "l", action = "edit" },
@@ -73,6 +83,7 @@ lvim.builtin.nvimtree.setup.view.mappings = {
     { key = "t", action = "edit" },
   },
 }
+
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
@@ -92,14 +103,24 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
-
-
-
-
 -- generic LSP settings
 
+-- -- make sure server will always be installed even if the server is in skipped_servers list
+-- lvim.lsp.installer.setup.ensure_installed = {
+--     "sumeko_lua",
+--     "jsonls",
+-- }
+-- -- change UI setting of `LspInstallInfo`
+-- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
+-- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
+-- lvim.lsp.installer.setup.ui.border = "rounded"
+-- lvim.lsp.installer.setup.ui.keymaps = {
+--     uninstall_server = "d",
+--     toggle_server_expand = "o",
+-- }
+
 -- ---@usage disable automatic installation of servers
-lvim.lsp.automatic_servers_installation = true
+-- lvim.lsp.automatic_servers_installation = false
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
@@ -108,20 +129,21 @@ lvim.lsp.automatic_servers_installation = true
 -- require("lvim.lsp.manager").setup("pyright", opts)
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
--- ---`:LvimInfo` lists which server(s) are skiipped for the current filetype
+-- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
 -- vim.tbl_map(function(server)
 --   return server ~= "emmet_ls"
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 -- -- you can set a custom on_attach function that will be used for all the language servers
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
--- lvim.lsp.on_attach_callback = function(client, bufnr)
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---   --Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- end
+lvim.lsp.on_attach_callback = function(client, bufnr)
+  require("aerial").on_attach(client, bufnr) --显示代码结构要 attach 到 lsp 上
+  --local function buf_set_option(...)
+  --  vim.api.nvim_buf_set_option(bufnr, ...)
+  --end
+  ----Enable completion triggered by <c-x><c-o>
+  --buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 -- local formatters = require "lvim.lsp.null-ls.formatters"
@@ -138,6 +160,7 @@ lvim.lsp.automatic_servers_installation = true
 --     filetypes = { "typescript", "typescriptreact" },
 --   },
 -- }
+
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
@@ -155,17 +178,29 @@ lvim.lsp.automatic_servers_installation = true
 --     filetypes = { "javascript", "python" },
 --   },
 -- }
+
 -- Additional Plugins
--- lvim.plugins = {
---     {"folke/tokyonight.nvim"},
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
-local home = os.getenv("HOME")
-package.path = home .. "/.config/lvim/?.lua;" .. package.path
-require("plugins")
+lvim.plugins = {
+  -- 更好的显示代码结构,并且自动打开
+  { 'stevearc/aerial.nvim',
+    config = function() require('aerial').setup(
+        {
+          open_automatic = true,
+          backends = { "treesitter", "lsp", "markdown" },
+        }
+      )
+    end
+  },
+  { "bigzhu/flutter-riverpod-snippets" },
+  { "ellisonleao/gruvbox.nvim" }, -- themes
+  { "bigzhu/vimwiki" },
+  --{"folke/tokyonight.nvim"},
+  --{
+  --  "folke/trouble.nvim",
+  --  cmd = "TroubleToggle",
+  --},
+}
+
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
@@ -178,10 +213,7 @@ require("plugins")
 --     -- let treesitter use bash highlight for zsh files as well
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
-require("markdown")
-require("options")
--- 加载 riverpod 的 snippets
-require("luasnip.loaders.from_vscode").lazy_load()
--- 太烦了,影响操作,关闭
--- 一个关不了的大爷, 关了 map 映射报错
---lvim.builtin.which_key.active = false
+-- })
+
+local home = os.getenv("HOME")
+vim.cmd('source ' .. home .. '/.config/lvim/markdown.vim')
