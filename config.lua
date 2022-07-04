@@ -20,6 +20,8 @@ lvim.transparent_window = true
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- open outline
+lvim.keys.normal_mode["<Leader>o"] = ":SymbolsOutline<CR>"
 -- 关闭愚蠢的自动移到上下行
 vim.opt.whichwrap = ""
 --fold
@@ -194,11 +196,22 @@ end
 
 -- Additional Plugins
 lvim.plugins = {
+  -- 另一个 outline
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    config = function() require('symbols-outline').setup(
+        {
+          auto_preview = false,
+        }
+      )
+    end
+  },
   -- 更好的显示代码结构,并且自动打开
   { 'stevearc/aerial.nvim',
     config = function() require('aerial').setup(
         {
-          open_automatic = true,
+          open_automatic = false,
           backends = { "treesitter", "lsp", "markdown" },
         }
       )
