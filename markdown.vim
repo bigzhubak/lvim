@@ -5,7 +5,8 @@ let g:md_path='~/Dropbox/cheese/'
 "hugo 模版和配置文件目录
 let g:blog_source_dir='~/Dropbox/blog/'
 let g:sub_path='tips/'
-
+" 设置文件类型
+let g:vimwiki_filetypes = ['markdown', 'pandoc']
 let g:vimwiki_list = [{'path': g:md_path.g:sub_path,
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
