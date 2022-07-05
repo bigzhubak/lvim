@@ -36,6 +36,9 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 -- avoid spelllang error tag chinese tag
 vim.opt.spelllang = { "en", "cjk" }
+-- 不要默认使用系统剪贴
+vim.opt.clipboard = ""
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
