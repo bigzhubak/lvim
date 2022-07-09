@@ -22,6 +22,8 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- open outline
 lvim.keys.normal_mode["<Leader>o"] = ":SymbolsOutline<CR>"
+-- 关闭左右的 buffer, https://github.com/akinsho/bufferline.nvim 提供
+lvim.keys.normal_mode["<Leader>O"] = ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>"
 -- 关闭愚蠢的自动移到上下行
 vim.opt.whichwrap = ""
 --fold
