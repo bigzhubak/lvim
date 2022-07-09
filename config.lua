@@ -76,6 +76,8 @@ vim.opt.clipboard = ""
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+-- 关闭自动配对补全
+lvim.builtin.autopairs.active = false
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
