@@ -18,6 +18,9 @@ lvim.transparent_window = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
+
+-- 查看格式化和检查, 一些工具需要额外安装 https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+lvim.keys.normal_mode["<Leader>i"] = ":NullLsInfo<CR>"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- open outline
@@ -156,52 +159,7 @@ lvim.lsp.on_attach_callback = function(client, bufnr)
   --buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
--- how to use null-ls: https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40
--- set a formatter, this will override the language server formatting capabilities (if it exists)
 
---local formatters = require "lvim.lsp.null-ls.formatters"
---formatters.setup {
---  {
---    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---    command = "prettier",
---    ---@usage arguments to pass to the formatter
---    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---    extra_args = { "--print-with", "100" },
---    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---    filetypes = { "typescript", "typescriptreact", "markdown", "vimwiki", "javascript", "typescript", "typescriptreact",
---      "vue", "css", "scss", "less", "html", "yaml" },
---  },
---}
-
--- set additional linters
-local linters = require "lvim.lsp.null-ls.linters"
-
-linters.setup {
-  { command = "eslint", filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" } },
-  { command = "jsonlint", filetypes = { "json" } },
-  --{ command = "flake8", filetypes = { "python" } },
-  --{
-  --  -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-  --  command = "shellcheck",
-  --  ---@usage arguments to pass to the formatter
-  --  -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-  --  extra_args = { "--severity", "warning" },
-  --},
-  --{
-  --  command = "codespell",
-  --  ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  --  filetypes = { "javascript", "python" },
-  --},
-}
---
---local code_actions = require "lvim.lsp.null-ls.code_actions"
---code_actions.setup {
---  {
---    command = "proselint",
---    args = { "--json" },
---    filetypes = { "markdown", "tex" },
---  },
---}
 
 -- Additional Plugins
 lvim.plugins = {
@@ -228,7 +186,7 @@ lvim.plugins = {
   },
   { "bigzhu/flutter-riverpod-snippets" },
   { "ellisonleao/gruvbox.nvim" }, -- themes
-  { "bigzhu/vimwiki" },
+  { "vimwiki/vimwiki" },
   --{"folke/tokyonight.nvim"},
   --{
   --  "folke/trouble.nvim",
@@ -252,3 +210,32 @@ lvim.plugins = {
 
 local home = os.getenv("HOME")
 vim.cmd('source ' .. home .. '/.config/lvim/markdown.vim')
+
+-- how to use null-ls: https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40
+-- set a formatter, this will override the language server formatting capabilities (if it exists)
+
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { filetypes = { "javascriptreact", "javascript", "typescriptreact", "typescript", "vue" }, command = "eslint" },
+  { filetypes = { "markdown", "vimwiki" }, command = "remark" },
+  { filetypes = { "sh" }, command = "shellharden" },
+  { filetypes = { "lua" }, command = "lua_format" },
+  { filetypes = { "python" }, command = "autopep8" },
+}
+
+-- set additional linters
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { filetypes = { "javascriptreact", "javascript", "typescriptreact", "typescript", "vue", }, command = "eslint" },
+  { filetypes = { "json" }, command = "jsonlint" },
+  { filetypes = { "sh" }, command = "shellcheck" },
+  --{ filetypes = { "lua" }, command = "luacheck" },
+}
+
+local code_actions = require "lvim.lsp.null-ls.code_actions"
+code_actions.setup {
+  { filetypes = { "markdown", "tex" }, command = "proselint", args = { "--json" } },
+  { filetypes = { "sh" }, command = "shellcheck" },
+  { filetypes = { "lua" }, command = "refactoring" },
+}
