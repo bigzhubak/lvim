@@ -222,6 +222,7 @@ formatters.setup {
   { filetypes = { "sh" }, command = "shellharden" },
   { filetypes = { "lua" }, command = "lua_format" },
   { filetypes = { "python" }, command = "autopep8" },
+  { filetypes = { "dart" }, command = "dart_format" },
 }
 
 -- set additional linters

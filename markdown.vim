@@ -4,7 +4,7 @@
 let g:md_path='~/Dropbox/cheese/tips/'
 " 设置文件类型
 let g:vimwiki_filetypes = ['markdown', 'pandoc']
-let g:vimwiki_list = [{'path': g:md_path.g:md_path,
+let g:vimwiki_list = [{'path': g:md_path,
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " transfor markmap
