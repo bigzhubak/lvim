@@ -19,6 +19,7 @@ lvim.transparent_window = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 
+lvim.keys.normal_mode["<Leader>m"] = ":! markmap %<CR>"
 -- 查看格式化和检查, 一些工具需要额外安装 https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 lvim.keys.normal_mode["<Leader>i"] = ":NullLsInfo<CR>"
 -- add your own keymapping
