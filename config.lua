@@ -98,7 +98,7 @@ vim.cmd('source ' .. home .. '/.config/lvim/markdown.vim')
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-    {
+    {filetypes = {"go"}, command = "gofmt"}, {
         filetypes = {
             "javascriptreact", "javascript", "typescriptreact", "typescript",
             "vue"
@@ -113,7 +113,7 @@ formatters.setup {
 -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-    {
+    {filetypes = {"go"}, command = "golangci_lint"}, {
         filetypes = {
             "javascriptreact", "javascript", "typescriptreact", "typescript",
             "vue"
@@ -128,5 +128,5 @@ local code_actions = require "lvim.lsp.null-ls.code_actions"
 code_actions.setup {
     {filetypes = {"markdown", "tex"}, command = "proselint", args = {"--json"}},
     {filetypes = {"sh"}, command = "shellcheck"},
-    {filetypes = {"lua", "dart", "python"}, command = "refactoring"}
+    {filetypes = {"lua", "dart", "python", "go"}, command = "refactoring"}
 }
