@@ -69,7 +69,8 @@ end
 
 -- Additional Plugins
 lvim.plugins = {
-    -- 另一个 outline
+    {"dart-lang/dart-vim-plugin"}, -- TSInstall dart 使得 dart 编辑会 crash, 只能装这个来高亮 dart 代码
+    {"vimwiki/vimwiki"}, {"edluffy/hologram.nvim"}, -- 另一个 outline
     {
         "simrat39/symbols-outline.nvim",
         cmd = "SymbolsOutline",
@@ -85,16 +86,14 @@ lvim.plugins = {
                 backends = {"treesitter", "lsp", "markdown"}
             })
         end
-    }, {"bigzhu/flutter-riverpod-snippets"}, {"ellisonleao/gruvbox.nvim"}, -- themes
-    {"vimwiki/vimwiki"}, {"edluffy/hologram.nvim"}
+    }, {"bigzhu/flutter-riverpod-snippets"}, {"ellisonleao/gruvbox.nvim"} -- themes
 
 }
 
 local home = os.getenv("HOME")
 vim.cmd('source ' .. home .. '/.config/lvim/markdown.vim')
 
--- how to use null-ls: https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40
--- set a formatter, this will override the language server formatting capabilities (if it exists)
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -104,7 +103,7 @@ formatters.setup {
             "vue"
         },
         command = "eslint"
-    }, {filetypes = {"markdown", "vimwiki"}, command = "remark"},
+    }, {filetypes = {"markdown", "vimwiki"}, command = "mdformat"},
     {filetypes = {"sh"}, command = "shellharden"},
     {filetypes = {"lua"}, command = "lua_format"},
     {filetypes = {"python"}, command = "autopep8"}
