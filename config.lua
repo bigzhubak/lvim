@@ -35,6 +35,17 @@ vim.opt.clipboard = ""
 
 -- 更好的错误提示，关闭原本的错误提示
 lvim.lsp.diagnostics.virtual_text = false
+-- 光标落上去时候自动显示 diagnostic
+lvim.lsp.diagnostics.float = true
+OpenDiagFloat = function()
+	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+		if vim.api.nvim_win_get_config(winid).zindex then
+			return
+		end
+	end
+	vim.diagnostic.open_float({ focusable = false })
+end
+vim.cmd([[autocmd CursorHold <buffer> lua OpenDiagFloat()]])
 -- 关闭自动配对补全
 lvim.builtin.autopairs.active = false
 lvim.builtin.alpha.active = true
@@ -78,12 +89,10 @@ lvim.lsp.on_attach_callback = function(client, bufnr)
 	-- end
 	----Enable completion triggered by <c-x><c-o>
 	-- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-	require("lsp_lines").setup() -- 更好的错误提示 this should probably be registered after lspconfig
 end
 
 -- Additional Plugins
 lvim.plugins = {
-	{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" }, -- 更好的错误提示
 	{ "dart-lang/dart-vim-plugin" }, -- TSInstall dart 使得 dart 编辑会 crash, 只能装这个来高亮 dart 代码
 	{ "vimwiki/vimwiki" },
 	{ "edluffy/hologram.nvim" }, -- 另一个 outline
