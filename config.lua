@@ -31,7 +31,10 @@ vim.opt.shiftwidth = 2
 vim.opt.spelllang = { "en", "cjk" }
 -- 不要默认使用系统剪贴
 vim.opt.clipboard = ""
+-- Disable virtual_text since it's redundant due to lsp_lines.
 
+-- 更好的错误提示，关闭原本的错误提示
+lvim.lsp.diagnostics.virtual_text = false
 -- 关闭自动配对补全
 lvim.builtin.autopairs.active = false
 lvim.builtin.alpha.active = true
@@ -75,10 +78,12 @@ lvim.lsp.on_attach_callback = function(client, bufnr)
 	-- end
 	----Enable completion triggered by <c-x><c-o>
 	-- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+	require("lsp_lines").setup() -- 更好的错误提示 this should probably be registered after lspconfig
 end
 
 -- Additional Plugins
 lvim.plugins = {
+	{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" }, -- 更好的错误提示
 	{ "dart-lang/dart-vim-plugin" }, -- TSInstall dart 使得 dart 编辑会 crash, 只能装这个来高亮 dart 代码
 	{ "vimwiki/vimwiki" },
 	{ "edluffy/hologram.nvim" }, -- 另一个 outline
