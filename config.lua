@@ -37,15 +37,10 @@ vim.opt.clipboard = ""
 lvim.lsp.diagnostics.virtual_text = false
 -- 光标落上去时候自动显示 diagnostic
 lvim.lsp.diagnostics.float = true
-OpenDiagFloat = function()
-	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-		if vim.api.nvim_win_get_config(winid).zindex then
-			return
-		end
-	end
-	vim.diagnostic.open_float({ focusable = false })
-end
-vim.cmd([[autocmd CursorHold <buffer> lua OpenDiagFloat()]])
+-- You will likely want to reduce updatetime which affects CursorHold
+-- note: this setting is global and should be set only once
+vim.o.updatetime = 250
+vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 -- 关闭自动配对补全
 lvim.builtin.autopairs.active = false
 lvim.builtin.alpha.active = true
