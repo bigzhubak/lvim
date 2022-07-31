@@ -42,9 +42,9 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.nvimtree.setup.view.mappings = {
 	list = {
-		{ key = "l", action = "edit" },
-		{ key = "h", action = "edit" },
-		{ key = "t", action = "edit" },
+		{ key = "l", action = "tabnew" },
+		{ key = "h", action = "tabnew" },
+		{ key = "t", action = "tabnew" },
 	},
 }
 
