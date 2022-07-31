@@ -48,6 +48,13 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.setup.open_on_tab = true
+
+lvim.builtin.nvimtree.setup.filters = {
+	dotfiles = false, --show dotfiles
+	custom = { "*.ex5" }, -- for mql5 dev, 隐藏编译后文件
+}
+
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.nvimtree.setup.view.mappings = {
 	list = {
@@ -79,11 +86,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 lvim.lsp.on_attach_callback = function(client, bufnr)
 	require("aerial").on_attach(client, bufnr) -- 显示代码结构要 attach 到 lsp 上
-	-- local function buf_set_option(...)
-	--  vim.api.nvim_buf_set_option(bufnr, ...)
-	-- end
-	----Enable completion triggered by <c-x><c-o>
-	-- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
 -- Additional Plugins
@@ -129,7 +131,7 @@ formatters.setup({
 		},
 		command = "prettier",
 	},
-	{ filetypes = { "markdown", "vimwiki" }, command = "mdformat" },
+	{ filetypes = { "markdown", "vimwiki" }, command = "prettier" },
 	{ filetypes = { "sh" }, command = "shellharden" },
 	{ filetypes = { "lua" }, command = "stylua" },
 	{ filetypes = { "python" }, command = "autopep8" },
@@ -161,3 +163,6 @@ code_actions.setup({
 	{ filetypes = { "sh" }, command = "shellcheck" },
 	{ filetypes = { "lua", "dart", "python", "go" }, command = "refactoring" },
 })
+
+-- bufferline 只显示 tab
+lvim.builtin.bufferline.options.mode = "tabs"
