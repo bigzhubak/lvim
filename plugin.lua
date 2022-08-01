@@ -1,0 +1,31 @@
+-- Additional Plugins
+lvim.plugins = {
+	{ "dart-lang/dart-vim-plugin" }, -- TSInstall dart 使得 dart 编辑会 crash, 只能装这个来高亮 dart 代码
+	{ "vimwiki/vimwiki" },
+	{ "edluffy/hologram.nvim" }, -- 另一个 outline
+	{
+		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
+		config = function()
+			require("symbols-outline").setup({ auto_preview = false })
+		end,
+	}, -- 更好的显示代码结构,并且自动打开
+	{
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup({
+				open_automatic = true,
+				backends = { "treesitter", "lsp", "markdown" },
+			})
+		end,
+	},
+	{ "bigzhu/flutter-riverpod-snippets" },
+	{ "ellisonleao/gruvbox.nvim" }, -- themes
+}
+-- -- you can set a custom on_attach function that will be used for all the language servers
+-- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
+lvim.lsp.on_attach_callback = function(client, bufnr)
+	require("aerial").on_attach(client, bufnr) -- 显示代码结构要 attach 到 lsp 上
+end
+
+vim.cmd("source markdown.vim")
