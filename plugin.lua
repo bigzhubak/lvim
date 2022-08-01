@@ -28,4 +28,5 @@ lvim.lsp.on_attach_callback = function(client, bufnr)
 	require("aerial").on_attach(client, bufnr) -- 显示代码结构要 attach 到 lsp 上
 end
 
-vim.cmd("source markdown.vim")
+local home = os.getenv("HOME")
+vim.cmd("source " .. home .. "/.config/lvim/markdown.vim")
