@@ -12,7 +12,7 @@ formatters.setup({
 		},
 		command = "prettier",
 	},
-	{ filetypes = { "markdown", "vimwiki" }, command = "prettier" },
+	{ filetypes = { "markdown", "vimwiki", "graphql" }, command = "prettier" },
 	{ filetypes = { "sh" }, command = "shellharden" },
 	{ filetypes = { "lua" }, command = "stylua" },
 	{ filetypes = { "python" }, command = "autopep8" },

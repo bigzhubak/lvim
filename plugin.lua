@@ -1,6 +1,7 @@
 -- Additional Plugins
 -- :PackerInstall
 lvim.plugins = {
+	--{ "jparise/vim-graphql" }, -- for graphql highlight in js/ts
 	{ "github/copilot.vim" },
 	{ "honza/vim-snippets" },
 	{ "bigzhu/flutter-riverpod-snippets" },
