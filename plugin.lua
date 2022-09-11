@@ -1,5 +1,12 @@
 -- Additional Plugins
+-- :PackerInstall
 lvim.plugins = {
+	{ "github/copilot.vim" },
+	{ "honza/vim-snippets" },
+	{ "bigzhu/flutter-riverpod-snippets" },
+	{ "Neevash/awesome-flutter-snippets" },
+	{ "hrsh7th/vim-vsnip" },
+	{ "hrsh7th/vim-vsnip-integ" },
 	{ "dart-lang/dart-vim-plugin" }, -- TSInstall dart 使得 dart 编辑会 crash, 只能装这个来高亮 dart 代码
 	{ "vimwiki/vimwiki" },
 	{ "edluffy/hologram.nvim" }, -- 另一个 outline
@@ -19,7 +26,6 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{ "bigzhu/flutter-riverpod-snippets" },
 	{ "ellisonleao/gruvbox.nvim" }, -- themes
 }
 -- -- you can set a custom on_attach function that will be used for all the language servers
