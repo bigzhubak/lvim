@@ -1,7 +1,20 @@
 -- Additional Plugins
 -- :PackerInstall
 lvim.plugins = {
-	--{ "jparise/vim-graphql" }, -- for graphql highlight in js/ts
+	{
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
+	{
+		"jose-elias-alvarez/typescript.nvim",
+		config = function()
+			require("typescript").setup({})
+		end,
+	},
 	{ "github/copilot.vim" },
 	{ "honza/vim-snippets" },
 	{ "bigzhu/flutter-riverpod-snippets" },
@@ -27,7 +40,8 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{ "ellisonleao/gruvbox.nvim" }, -- themes
+	--{ "ellisonleao/gruvbox.nvim" }, -- themes
+	{ "almo7aya/neogruvbox.nvim" },
 }
 -- -- you can set a custom on_attach function that will be used for all the language servers
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>

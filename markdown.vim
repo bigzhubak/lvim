@@ -8,9 +8,10 @@ let g:vimwiki_list = [{'path': g:md_path,
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " transfor markmap
-map <F4> :cd %:h <cr> :!markmap_new "%:t" -o ../mindmap/"%:r.html"<cr>
+"map <F4> :cd %:h <cr> :!markmap_new "%:t" -o ../mindmap/"%:r.html"<cr>
 
 map <c-f> :SearchMD 
+nmap <F4> <Plug>MarkdownPreview
 " 关了 folding
 let g:vim_markdown_folding_disabled = 1
 

@@ -1,6 +1,6 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "gruvbox"
+lvim.colorscheme = "neogruvbox"
 lvim.transparent_window = true
 lvim.leader = "space"
 lvim.keys.normal_mode["<Leader>C"] = ":tabclose <CR>"
