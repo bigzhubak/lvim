@@ -19,8 +19,8 @@ lvim.lsp.diagnostics.virtual_text = false
 -- 光标落上去时候自动显示 diagnostic
 lvim.lsp.diagnostics.float = true
 -- bufferline 只显示 tab
-lvim.builtin.bufferline.options.mode = "tabs"
+--lvim.builtin.bufferline.options.mode = "tabs"
 -- 这里必须手工设置为 nil, 否则 mode 为 tabs 时会报错
-lvim.builtin.bufferline.options.custom_filter = nil
+--lvim.builtin.bufferline.options.custom_filter = nil
 
 require("luasnip.loaders.from_vscode").lazy_load()
