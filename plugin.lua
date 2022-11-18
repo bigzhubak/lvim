@@ -37,8 +37,17 @@ lvim.plugins = {
 	{
 		"stevearc/aerial.nvim",
 		config = function()
-			require("aerial").setup({
-				open_automatic = true,
+			local aerial = require("aerial")
+			aerial.setup({
+				-- open_automatic = true,
+				open_automatic = function(bufnr)
+					-- Enforce a minimum line count
+					return vim.api.nvim_buf_line_count(bufnr) > 80
+						-- Enforce a minimum symbol count
+						and aerial.num_symbols(bufnr) > 4
+						-- A useful way to keep aerial closed when closed manually
+						and not aerial.was_closed()
+				end,
 				backends = { "treesitter", "lsp", "markdown" },
 			})
 		end,
