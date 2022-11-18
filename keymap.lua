@@ -14,3 +14,7 @@ lvim.keys.normal_mode["<Leader>O"] = ":BufferLineCloseRight<CR>:BufferLineCloseL
 -- 我自己的 Markdown wiki 系统
 lvim.keys.normal_mode["<C-f>"] = ":SearchMD "
 lvim.keys.normal_mode["<F4>"] = "<Plug>MarkdownPreview"
+
+-- buggerline 的左右切换
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
