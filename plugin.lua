@@ -23,6 +23,7 @@ lvim.plugins = {
 	{ "hrsh7th/vim-vsnip-integ" },
 	-- TSInstall dart 使得 dart 编辑会 crash, 只能装这个来高亮 dart 代码
 	-- { "dart-lang/dart-vim-plugin" },
+	{ "akinsho/flutter-tools.nvim" },
 	{ "vimwiki/vimwiki" },
 	{ "edluffy/hologram.nvim" },
 	-- 另一个 outline

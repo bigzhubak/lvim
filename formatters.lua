@@ -1,4 +1,6 @@
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+-- :LspInstall dart
+-- :TSInstall dart
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
 	{ filetypes = { "go" }, command = "gofmt" },
