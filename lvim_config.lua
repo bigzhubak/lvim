@@ -1,6 +1,7 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "neogruvbox"
+-- lvim.colorscheme = "neogruvbox"
+lvim.colorscheme = "gruvbox"
 lvim.transparent_window = true
 
 -- 更好的错误提示，关闭原本的错误提示
