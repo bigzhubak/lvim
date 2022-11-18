@@ -3,7 +3,7 @@ lvim.keys.normal_mode["<Leader>C"] = ":tabclose <CR>"
 -- markdown to mindmap https://markmap.js.org/docs#markmap-cli
 lvim.keys.normal_mode["<Leader>m"] = ":! markmap %<CR>"
 -- 查看格式化和检查, 一些工具需要额外安装 https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
-lvim.keys.normal_mode["<Leader>i"] = ":NullLsInfo<CR>"
+lvim.keys.normal_mode["<Leader>n"] = ":NullLsInfo<CR>"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- open outline
@@ -18,3 +18,6 @@ lvim.keys.normal_mode["<F4>"] = "<Plug>MarkdownPreview"
 -- buggerline 的左右切换
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+
+-- 右边打开 outline, 与左边的 leader + e 对应
+lvim.keys.normal_mode["<Leader>i"] = ":AerialToggle<CR>"
