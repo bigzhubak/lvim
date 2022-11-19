@@ -22,7 +22,17 @@ lvim.plugins = {
 	{ "hrsh7th/vim-vsnip" },
 	{ "hrsh7th/vim-vsnip-integ" },
 	-- TSInstall dart 使得 dart 编辑会 crash, 只能装这个来高亮 dart 代码
-	{ "akinsho/flutter-tools.nvim" },
+	{
+		"akinsho/flutter-tools.nvim",
+		config = function()
+			require("flutter-tools").setup({
+				outline = {
+					open_cmd = "30vnew", -- command to use to open the outline buffer
+					auto_open = true, -- if true this will open the outline automatically when it is first populated
+				},
+			})
+		end,
+	},
 	{ "vimwiki/vimwiki" },
 	{ "edluffy/hologram.nvim" },
 	-- 另一个 outline
