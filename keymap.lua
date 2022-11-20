@@ -21,3 +21,6 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
 -- 右边打开 outline, 与左边的 leader + e 对应
 lvim.keys.normal_mode["<Leader>i"] = ":AerialToggle<CR>"
+
+-- Code Action
+lvim.keys.normal_mode["<C-l>"] = "<cmd>lua vim.lsp.buf.code_action()<CR>"
