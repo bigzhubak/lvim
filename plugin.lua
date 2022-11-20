@@ -15,8 +15,9 @@ lvim.plugins = {
 			require("typescript").setup({})
 		end,
 	},
-	{ "github/copilot.vim" },
 	{ "honza/vim-snippets" },
+	-- https://github.com/LunarVim/LunarVim/issues/3153
+	{ "github/copilot.vim" },
 	{ "bigzhu/flutter-riverpod-snippets" },
 	{ "Neevash/awesome-flutter-snippets" },
 	{ "hrsh7th/vim-vsnip" },
