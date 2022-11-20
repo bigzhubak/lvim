@@ -3,6 +3,8 @@ lvim.builtin.autopairs.active = false
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
+-- 关闭愚蠢的下划线插件
+lvim.builtin.illuminate.active = false
 
 lvim.builtin.terminal.active = true
 
@@ -13,11 +15,12 @@ lvim.builtin.nvimtree.setup.filters = {
 	custom = { "*.ex5" }, -- for mql5 dev, 隐藏编译后文件
 }
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+
 lvim.builtin.nvimtree.setup.view.mappings = {
 	list = {
 		{ key = "l", action = "edit" },
 		{ key = "h", action = "edit" },
-		{ key = "t", action = "tabnew" },
+		--{ key = "t", action = "edit" },
 	},
 }
 
