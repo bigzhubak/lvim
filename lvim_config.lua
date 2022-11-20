@@ -14,27 +14,6 @@ lvim.lsp.diagnostics.underline = false
 lvim.lsp.installer.setup.automatic_installation = true
 lvim.lsp.document_highlight = false
 
--- 移动上去高亮
---lvim.autocommands = {
---	{
---		"CursorHold",
---		{
---			command = "lua vim.lsp.buf.document_highlight()",
---		},
---	},
---	{
---		"CursorHoldI",
---		{
---			command = "lua vim.lsp.buf.document_highlight()",
---		},
---	},
---	{
---		"CursorMoved",
---		{
---			command = "lua vim.lsp.buf.clear_references()",
---		},
---	},
---}
 -- bufferline 只显示 tab
 --lvim.builtin.bufferline.options.mode = "tabs"
 -- 这里必须手工设置为 nil, 否则 mode 为 tabs 时会报错
