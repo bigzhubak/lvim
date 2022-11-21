@@ -1,6 +1,14 @@
 -- Additional Plugins
 -- :PackerInstall
 lvim.plugins = {
+	-- 不装这个在 code action 的时候会报错
+	{
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	},
 	{
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",
