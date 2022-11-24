@@ -8,11 +8,6 @@ lvim.transparent_window = true
 lvim.lsp.diagnostics.virtual_text = false
 -- 光标落上去时候自动显示 diagnostic
 lvim.lsp.diagnostics.float = false
--- 关闭愚蠢的下划线
-lvim.lsp.diagnostics.underline = false
--- 自动安装
-lvim.lsp.installer.setup.automatic_installation = true
-lvim.lsp.document_highlight = false
 
 -- bufferline 只显示 tab
 --lvim.builtin.bufferline.options.mode = "tabs"

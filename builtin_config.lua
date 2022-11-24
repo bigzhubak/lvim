@@ -25,7 +25,7 @@ lvim.builtin.nvimtree.setup.view.mappings = {
 	list = {
 		{ key = "l", action = "edit" },
 		{ key = "h", action = "edit" },
-		--{ key = "t", action = "edit" },
+		{ key = "t", action = "edit" },
 	},
 }
 
