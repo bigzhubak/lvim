@@ -13,6 +13,7 @@ end
 
 lvim.builtin.terminal.active = true
 
+lvim.builtin.nvimtree.setup.view.width = 44
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.open_on_tab = true
 lvim.builtin.nvimtree.setup.filters = {
