@@ -20,15 +20,15 @@ lvim.plugins = {
 	-- 不装这个在 code action 的时候会报错
 	{
 		"ThePrimeagen/refactoring.nvim",
-		requires = {
+		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	},
 	{
 		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
-		setup = function()
+		build = "cd app && npm install",
+		init = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 		ft = { "markdown" },
