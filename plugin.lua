@@ -42,7 +42,20 @@ lvim.plugins = {
 	{ "honza/vim-snippets" },
 	-- https://github.com/LunarVim/LunarVim/issues/3153
 	--u{ "github/copilot.vim" },
-	{ "codota/tabnine-nvim", build = "./dl_binaries.sh" },
+	{
+		"codota/tabnine-nvim",
+		build = "./dl_binaries.sh",
+		config = function()
+			require("tabnine").setup({
+				disable_auto_comment = true,
+				accept_keymap = "<Tab>",
+				dismiss_keymap = "<C-]>",
+				debounce_ms = 300,
+				suggestion_color = { gui = "#808080", cterm = 244 },
+				execlude_filetypes = { "TelescopePrompt" },
+			})
+		end,
+	},
 	{ "bigzhu/flutter-riverpod-snippets" },
 	{ "Neevash/awesome-flutter-snippets" },
 	{ "hrsh7th/vim-vsnip" },
