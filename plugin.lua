@@ -41,7 +41,8 @@ lvim.plugins = {
 	},
 	{ "honza/vim-snippets" },
 	-- https://github.com/LunarVim/LunarVim/issues/3153
-	{ "github/copilot.vim" },
+	--u{ "github/copilot.vim" },
+	{ "codota/tabnine-nvim", build = "./dl_binaries.sh" },
 	{ "bigzhu/flutter-riverpod-snippets" },
 	{ "Neevash/awesome-flutter-snippets" },
 	{ "hrsh7th/vim-vsnip" },
