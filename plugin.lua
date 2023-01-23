@@ -1,22 +1,7 @@
 -- Additional Plugins
 -- :PackerInstall
+local home = os.getenv("HOME")
 lvim.plugins = {
-	--{
-	--	"zbirenbaum/copilot.lua",
-	--	event = "VimEnter",
-	--	config = function()
-	--		vim.schedule(function()
-	--			require("copilot").setup()
-	--		end)
-	--	end,
-	--},
-	--{
-	--	"zbirenbaum/copilot-cmp",
-	--	after = { "copilot.lua" },
-	--	config = function()
-	--		require("copilot_cmp").setup()
-	--	end,
-	--},
 	-- 不装这个在 code action 的时候会报错
 	{
 		"ThePrimeagen/refactoring.nvim",
@@ -93,5 +78,19 @@ lvim.plugins = {
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 lvim.lsp.on_attach_callback = function(client, bufnr) end
 
-local home = os.getenv("HOME")
+-- vimwiki config
+vim.g.vimwiki_filetypes = { "markdown", "pandoc" }
+vim.g.vimwiki_list = {
+	{
+		path = "~/Dropbox/cheese/tips/",
+		syntax = "markdown",
+		ext = ".md",
+	},
+}
+vim.g.vimwiki_ext2syntax = {
+	[".md"] = "markdown",
+	[".markdown"] = "markdown",
+	[".mdown"] = "markdown",
+}
+
 vim.cmd("source " .. home .. "/.config/lvim/markdown.vim")
