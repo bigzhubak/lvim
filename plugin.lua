@@ -2,7 +2,12 @@
 -- :PackerInstall
 local home = os.getenv("HOME")
 lvim.plugins = {
-	-- 不装这个在 code action 的时候会报错
+	{ -- 让 markdown 中的代码块也能用上 lsp
+		"AckslD/nvim-FeMaco.lua",
+		config = function()
+			require("femaco").setup()
+		end,
+	},
 	{
 		"jakewvincent/mkdnflow.nvim",
 		config = function()
