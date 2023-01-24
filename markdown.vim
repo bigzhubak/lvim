@@ -9,7 +9,7 @@ let g:md_path='~/Dropbox/cheese/tips/'
 "let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
 " 关了 folding
-let g:vim_markdown_folding_disabled = 1
+"let g:vim_markdown_folding_disabled = 1
 
 "找 md 
 if exists("*SearchMD")

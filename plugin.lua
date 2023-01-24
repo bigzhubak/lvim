@@ -4,6 +4,22 @@ local home = os.getenv("HOME")
 lvim.plugins = {
 	-- 不装这个在 code action 的时候会报错
 	{
+		"jakewvincent/mkdnflow.nvim",
+		config = function()
+			require("mkdnflow").setup({
+				links = {
+					style = "markdown",
+					name_is_source = true,
+					conceal = false,
+					context = 0,
+					implicit_extension = nil,
+					transform_implicit = false,
+					transform_explicit = false,
+				},
+			})
+		end,
+	},
+	{
 		"ThePrimeagen/refactoring.nvim",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
@@ -57,7 +73,7 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{ "vimwiki/vimwiki" },
+	--{ "vimwiki/vimwiki" },
 	{ "edluffy/hologram.nvim" },
 	-- 更好的显示代码结构,并且自动打开
 	{
@@ -79,18 +95,18 @@ lvim.plugins = {
 lvim.lsp.on_attach_callback = function(client, bufnr) end
 
 -- vimwiki config
-vim.g.vimwiki_filetypes = { "markdown", "pandoc" }
-vim.g.vimwiki_list = {
-	{
-		path = "~/Dropbox/cheese/tips/",
-		syntax = "markdown",
-		ext = ".md",
-	},
-}
-vim.g.vimwiki_ext2syntax = {
-	[".md"] = "markdown",
-	[".markdown"] = "markdown",
-	[".mdown"] = "markdown",
-}
+--vim.g.vimwiki_filetypes = { "markdown", "pandoc" }
+--vim.g.vimwiki_list = {
+--	{
+--		path = "~/Dropbox/cheese/tips/",
+--		syntax = "markdown",
+--		ext = ".md",
+--	},
+--}
+--vim.g.vimwiki_ext2syntax = {
+--	[".md"] = "markdown",
+--	[".markdown"] = "markdown",
+--	[".mdown"] = "markdown",
+--}
 
 vim.cmd("source " .. home .. "/.config/lvim/markdown.vim")
