@@ -99,19 +99,4 @@ lvim.plugins = {
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 lvim.lsp.on_attach_callback = function(client, bufnr) end
 
--- vimwiki config
---vim.g.vimwiki_filetypes = { "markdown", "pandoc" }
---vim.g.vimwiki_list = {
---	{
---		path = "~/Dropbox/cheese/tips/",
---		syntax = "markdown",
---		ext = ".md",
---	},
---}
---vim.g.vimwiki_ext2syntax = {
---	[".md"] = "markdown",
---	[".markdown"] = "markdown",
---	[".mdown"] = "markdown",
---}
-
 vim.cmd("source " .. home .. "/.config/lvim/markdown.vim")

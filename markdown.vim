@@ -1,7 +1,7 @@
 " markdown wiki --------------------------------------------------------------------------------------------------------------
 
 " 文章内容存储目录
-let g:md_path='~/Dropbox/cheese/tips/'
+let g:md_path='~/Dropbox/cheese/'
 " 设置文件类型
 "let g:vimwiki_filetypes = ['markdown', 'pandoc']
 "let g:vimwiki_list = [{'path': g:md_path,
