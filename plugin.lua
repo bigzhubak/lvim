@@ -32,6 +32,9 @@ lvim.plugins = {
 					transform_implicit = false,
 					transform_explicit = false,
 				},
+				mappings = {
+					MkdnFoldSection = { "n", "<leader>q" },
+				},
 			})
 		end,
 	},
