@@ -183,6 +183,18 @@ lvim.builtin.treesitter.highlight.enable = true
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		require("nvim-treesitter.configs").setup({
+			ensure_installed = { "markdown", "markdown_inline" },
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = { "markdown" },
+			},
+		})
+	end,
+})
 package.path = os.getenv("HOME") .. "/.config/lvim/?.lua;" .. package.path
 require("vim_config")
 require("lvim_config")

@@ -3,6 +3,17 @@
 local home = os.getenv("HOME")
 lvim.plugins = {
 	{ -- 让 markdown 中的代码块也能用上 lsp
+		"epwalsh/obsidian.nvim",
+		config = function()
+			require("obsidian").setup({
+				dir = "~/Dropbox/cheese",
+				completion = {
+					nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+				},
+			})
+		end,
+	},
+	{ -- 让 markdown 中的代码块也能用上 lsp
 		"AckslD/nvim-FeMaco.lua",
 		config = function()
 			require("femaco").setup()
@@ -98,5 +109,3 @@ lvim.plugins = {
 -- -- you can set a custom on_attach function that will be used for all the language servers
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 lvim.lsp.on_attach_callback = function(client, bufnr) end
-
-vim.cmd("source " .. home .. "/.config/lvim/markdown.vim")
