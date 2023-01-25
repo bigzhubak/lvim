@@ -57,8 +57,6 @@ lvim.plugins = {
 		end,
 	},
 	{ "honza/vim-snippets" },
-	-- https://github.com/LunarVim/LunarVim/issues/3153
-	--u{ "github/copilot.vim" },
 	{
 		"codota/tabnine-nvim",
 		build = "./dl_binaries.sh",
