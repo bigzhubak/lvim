@@ -22,11 +22,31 @@ lvim.builtin.nvimtree.setup.filters = {
 }
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
+-- 在 tabnew 打开时候, 始终保持 nvimtree 打开
+local nt_api = require("nvim-tree.api")
+local tree_open = false
+local function tab_enter()
+	if tree_open then
+		nt_api.tree.open()
+		vim.api.nvim_command("wincmd p")
+	else
+		nt_api.tree.close()
+	end
+end
+
+nt_api.events.subscribe(nt_api.events.Event.TreeOpen, function()
+	tree_open = true
+end)
+nt_api.events.subscribe(nt_api.events.Event.TreeClose, function()
+	tree_open = false
+end)
+vim.api.nvim_create_autocmd("TabEnter,TabNewEnter", { callback = tab_enter })
+
 lvim.builtin.nvimtree.setup.view.mappings = {
 	list = {
-		{ key = "l", action = "edit" },
-		{ key = "h", action = "edit" },
-		{ key = "t", action = "edit" },
+		{ key = "l", action = "tabnew" },
+		{ key = "h", action = "tabnew" },
+		{ key = "t", action = "tabnew" },
 	},
 }
 
