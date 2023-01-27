@@ -7,6 +7,9 @@ lvim.plugins = {
 		config = function()
 			require("obsidian").setup({
 				dir = "~/Dropbox/cheese",
+				note_id_func = function(title)
+					return title
+				end,
 			})
 		end,
 	},
