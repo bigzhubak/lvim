@@ -7,9 +7,6 @@ lvim.plugins = {
 		config = function()
 			require("obsidian").setup({
 				dir = "~/Dropbox/cheese",
-				completion = {
-					nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
-				},
 			})
 		end,
 	},
@@ -60,20 +57,20 @@ lvim.plugins = {
 		end,
 	},
 	{ "honza/vim-snippets" },
-	{
-		"codota/tabnine-nvim",
-		build = "./dl_binaries.sh",
-		config = function()
-			require("tabnine").setup({
-				disable_auto_comment = true,
-				accept_keymap = "<Tab>",
-				dismiss_keymap = "<C-]>",
-				debounce_ms = 300,
-				suggestion_color = { gui = "#808080", cterm = 244 },
-				execlude_filetypes = { "TelescopePrompt" },
-			})
-		end,
-	},
+	--{
+	--	"codota/tabnine-nvim",
+	--	build = "./dl_binaries.sh",
+	--	config = function()
+	--		require("tabnine").setup({
+	--			disable_auto_comment = true,
+	--			accept_keymap = "<Tab>",
+	--			dismiss_keymap = "<C-]>",
+	--			debounce_ms = 300,
+	--			suggestion_color = { gui = "#808080", cterm = 244 },
+	--			execlude_filetypes = { "TelescopePrompt" },
+	--		})
+	--	end,
+	--},
 	{ "bigzhu/flutter-riverpod-snippets" },
 	{ "Neevash/awesome-flutter-snippets" },
 	{ "hrsh7th/vim-vsnip" },
