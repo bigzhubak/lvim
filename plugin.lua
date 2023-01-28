@@ -6,7 +6,7 @@ lvim.plugins = {
 		"epwalsh/obsidian.nvim",
 		config = function()
 			require("obsidian").setup({
-				dir = "~/Dropbox/cheese",
+				dir = "~/cheese",
 				note_id_func = function(title)
 					return title
 				end,
