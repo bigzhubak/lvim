@@ -1,5 +1,6 @@
 -- Additional Plugins
--- :PackerInstall
+-- :Lazy
+-- :Lazy update
 local home = os.getenv("HOME")
 lvim.plugins = {
 	{ -- 让 markdown 中的代码块也能用上 lsp
