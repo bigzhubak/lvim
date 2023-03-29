@@ -13,11 +13,12 @@ formatters.setup({
 			"typescriptreact",
 			"typescript",
 			"vue",
+			"html",
 		},
 		command = "prettier",
 	},
-	{ filetypes = { "markdown", "vimwiki", "graphql" }, command = "prettier" },
-	{ filetypes = { "sh" }, command = "shellharden" },
+	{ filetypes = { "markdown", "vimwiki", "graphql", "json" }, command = "prettier" },
+	{ filetypes = { "zsh" }, command = "shfmt" }, -- brew install shfmt
 	{ filetypes = { "lua" }, command = "stylua" },
 	{ filetypes = { "python" }, command = "autopep8" }, -- brew install autopep8
 })

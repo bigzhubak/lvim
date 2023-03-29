@@ -1,23 +1,45 @@
 -- Additional Plugins
--- :PackerInstall
+-- :Lazy
+-- :Lazy update
+local home = os.getenv("HOME")
 lvim.plugins = {
-	--{
-	--	"zbirenbaum/copilot.lua",
-	--	event = "VimEnter",
-	--	config = function()
-	--		vim.schedule(function()
-	--			require("copilot").setup()
-	--		end)
-	--	end,
-	--},
-	--{
-	--	"zbirenbaum/copilot-cmp",
-	--	after = { "copilot.lua" },
-	--	config = function()
-	--		require("copilot_cmp").setup()
-	--	end,
-	--},
-	-- 不装这个在 code action 的时候会报错
+	{ "Exafunction/codeium.vim" }, -- codeium
+	{ -- 让 markdown 中的代码块也能用上 lsp
+		"epwalsh/obsidian.nvim",
+		config = function()
+			require("obsidian").setup({
+				dir = "~/cheese",
+				note_id_func = function(title)
+					return title
+				end,
+			})
+		end,
+	},
+	{ -- 让 markdown 中的代码块也能用上 lsp
+		"AckslD/nvim-FeMaco.lua",
+		config = function()
+			require("femaco").setup()
+		end,
+	},
+	{
+		"jakewvincent/mkdnflow.nvim",
+		config = function()
+			require("mkdnflow").setup({
+				links = {
+					style = "markdown",
+					name_is_source = true,
+					conceal = true,
+					context = 0,
+					implicit_extension = nil,
+					transform_implicit = false,
+					transform_explicit = false,
+				},
+				mappings = {
+					MkdnFoldSection = { "n", "<leader>q" },
+				},
+			})
+		end,
+	},
 	{
 		"ThePrimeagen/refactoring.nvim",
 		dependencies = {
@@ -40,8 +62,20 @@ lvim.plugins = {
 		end,
 	},
 	{ "honza/vim-snippets" },
-	-- https://github.com/LunarVim/LunarVim/issues/3153
-	{ "github/copilot.vim" },
+	--{
+	--	"codota/tabnine-nvim",
+	--	build = "./dl_binaries.sh",
+	--	config = function()
+	--		require("tabnine").setup({
+	--			disable_auto_comment = true,
+	--			accept_keymap = "<Tab>",
+	--			dismiss_keymap = "<C-]>",
+	--			debounce_ms = 300,
+	--			suggestion_color = { gui = "#808080", cterm = 244 },
+	--			execlude_filetypes = { "TelescopePrompt" },
+	--		})
+	--	end,
+	--},
 	{ "bigzhu/flutter-riverpod-snippets" },
 	{ "Neevash/awesome-flutter-snippets" },
 	{ "hrsh7th/vim-vsnip" },
@@ -58,7 +92,7 @@ lvim.plugins = {
 			})
 		end,
 	},
-	{ "vimwiki/vimwiki" },
+	--{ "vimwiki/vimwiki" },
 	{ "edluffy/hologram.nvim" },
 	-- 更好的显示代码结构,并且自动打开
 	{
@@ -79,5 +113,4 @@ lvim.plugins = {
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 lvim.lsp.on_attach_callback = function(client, bufnr) end
 
-local home = os.getenv("HOME")
 vim.cmd("source " .. home .. "/.config/lvim/markdown.vim")

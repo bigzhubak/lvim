@@ -1,17 +1,5 @@
-" markdown wiki --------------------------------------------------------------------------------------------------------------
-
 " 文章内容存储目录
-let g:md_path='~/Dropbox/cheese/tips/'
-" 设置文件类型
-let g:vimwiki_filetypes = ['markdown', 'pandoc']
-let g:vimwiki_list = [{'path': g:md_path,
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
-" transfor markmap
-"map <F4> :cd %:h <cr> :!markmap_new "%:t" -o ../mindmap/"%:r.html"<cr>
-
-" 关了 folding
-let g:vim_markdown_folding_disabled = 1
+let g:md_path='~/cheese/'
 
 "找 md 
 if exists("*SearchMD")

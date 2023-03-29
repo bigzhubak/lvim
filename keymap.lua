@@ -11,8 +11,11 @@ lvim.keys.normal_mode["<Leader>o"] = ":SymbolsOutline<CR>"
 -- 关闭左右的 buffer, https://github.com/akinsho/bufferline.nvim 提供
 lvim.keys.normal_mode["<Leader>O"] = ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>"
 
--- 我自己的 Markdown wiki 系统
-lvim.keys.normal_mode["<C-f>"] = ":SearchMD "
+-- cheese 系统
+lvim.keys.normal_mode["<C-j>"] = ":ObsidianQuickSwitch<CR>" -- find 快速检索
+lvim.keys.normal_mode["<C-g>"] = ":ObsidianSearch<CR>" -- googd detail find 搜索全文
+lvim.keys.normal_mode["<C-n>"] = ":ObsidianNew " -- new 新建节点
+lvim.keys.normal_mode["<C-f>"] = ":SearchMD " -- cheese markdown 两段式搜索,
 lvim.keys.normal_mode["<F4>"] = "<Plug>MarkdownPreview"
 
 -- buggerline 的左右切换
