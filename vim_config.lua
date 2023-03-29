@@ -52,3 +52,16 @@ lvim.builtin.cmp.mapping["<Tab>"] = function(fallback)
 		end
 	end
 end
+
+-- reaplce copilot highlight
+lvim.autocommands = {
+	{
+		{ "ColorScheme" },
+		{
+			pattern = "*",
+			callback = function()
+				vim.api.nvim_set_hl(0, "CopilotSuggestion", { ctermfg = 8, fg = "#954d00" })
+			end,
+		},
+	},
+}
