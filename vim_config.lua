@@ -20,3 +20,8 @@ vim.opt.spelllang = { "en", "cjk" }
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 250
 vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+--
+vim.opt.wrap = true
+-- 开启 copilot tab 映射
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_filetypes = { markdown = true }

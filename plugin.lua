@@ -3,7 +3,8 @@
 -- :Lazy update
 local home = os.getenv("HOME")
 lvim.plugins = {
-	{ "Exafunction/codeium.vim" }, -- codeium
+	{ "github/copilot.vim" }, -- copilot
+	-- { "Exafunction/codeium.vim" }, -- codeium
 	{ -- 让 markdown 中的代码块也能用上 lsp
 		"epwalsh/obsidian.nvim",
 		config = function()
