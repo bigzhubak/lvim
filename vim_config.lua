@@ -23,7 +23,8 @@ vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {
 --
 vim.opt.wrap = true
 -- 开启 copilot tab 映射
-vim.g.copilot_filetypes = { markdown = true, gitcommit = true, yaml = true }
+--vim.g.copilot_filetypes = { markdown = true, gitcommit = true, yaml = true }
+vim.g.copilot_filetypes = { ["*"] = true }
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_tab_fallback = ""
