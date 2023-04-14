@@ -21,5 +21,5 @@ formatters.setup({
 	{ filetypes = { "zsh" }, command = "shfmt" }, -- brew install shfmt
 	{ filetypes = { "lua" }, command = "stylua" },
 	{ filetypes = { "python" }, command = "autopep8" }, -- brew install autopep8
-	{ filetypes = { "sql" }, command = "pg_format" }, --  sudo apt install pgformatter
+	{ filetypes = { "sql" }, command = "pg_format" },
 })

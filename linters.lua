@@ -21,4 +21,5 @@ linters.setup({
 	{ filetypes = { "json" }, command = "jsonlint" },
 	{ filetypes = { "sh" }, command = "shellcheck" },
 	-- { filetypes = { "lua" }, command = "luacheck" },
+	{ filetypes = { "sql" }, command = "sqlfluff", args = { "--dialect", "postgres" } },
 })

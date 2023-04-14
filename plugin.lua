@@ -3,6 +3,7 @@
 -- :Lazy update
 local home = os.getenv("HOME")
 lvim.plugins = {
+	{ "vim-scripts/plsql.vim" },
 	{ "github/copilot.vim" }, -- copilot
 	-- { "Exafunction/codeium.vim" }, -- codeium
 	{ -- 让 markdown 中的代码块也能用上 lsp
