@@ -1,6 +1,6 @@
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 -- :LspInstall dart
--- :TSInstall dart
+-- :TSInstall all
 -- space n  show null info
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
@@ -22,4 +22,5 @@ formatters.setup({
 	{ filetypes = { "lua" }, command = "stylua" },
 	{ filetypes = { "python" }, command = "autopep8" }, -- brew install autopep8
 	{ filetypes = { "sql" }, command = "pg_format" },
+	{ filetypes = { "toml" }, command = "taplo" }, -- cargo install taplo-cli --locked
 })
