@@ -108,7 +108,7 @@ lvim.plugins = {
 			})
 		end,
 	},
-	--{ "ellisonleao/gruvbox.nvim", priority = 1000 }, -- themes
+	--{ "ellisonleao/gruvbox.nvim" }, -- themes
 	{ "morhetz/gruvbox" }, -- themes
 	--{ "sainnhe/gruvbox-material" }, -- themes
 	--{ "almo7aya/neogruvbox.nvim" }, -- themes
