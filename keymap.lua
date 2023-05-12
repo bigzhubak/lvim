@@ -27,3 +27,12 @@ lvim.keys.normal_mode["<Leader>i"] = ":AerialToggle<CR>"
 
 -- Code Action
 lvim.keys.normal_mode["<C-l>"] = "<cmd>lua vim.lsp.buf.code_action()<CR>"
+
+-- 无效了
+--lvim.builtin.nvimtree.setup.view.mappings = {
+--	list = {
+--		{ key = "l", action = "tabnew" },
+--		{ key = "h", action = "tabnew" },
+--		{ key = "t", action = "tabnew" },
+--	},
+--}
