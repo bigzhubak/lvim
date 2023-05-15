@@ -4,12 +4,12 @@ lvim.builtin.autopairs.active = false
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 -- 关闭愚蠢的下划线插件, 改回 Visual 高亮
---lvim.builtin.illuminate.active = true
---lvim.builtin.illuminate.on_config_done = function(illuminate)
---	vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
---	vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
---	vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
---end
+lvim.builtin.illuminate.active = true
+lvim.builtin.illuminate.on_config_done = function(illuminate)
+	vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
+	vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
+	vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
+end
 
 lvim.builtin.terminal.active = true
 
@@ -41,14 +41,6 @@ nt_api.events.subscribe(nt_api.events.Event.TreeClose, function()
 	tree_open = false
 end)
 vim.api.nvim_create_autocmd("TabEnter,TabNewEnter", { callback = tab_enter })
-
-lvim.builtin.nvimtree.setup.view.mappings = {
-	list = {
-		{ key = "l", action = "tabnew" },
-		{ key = "h", action = "tabnew" },
-		{ key = "t", action = "tabnew" },
-	},
-}
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
