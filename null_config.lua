@@ -15,13 +15,13 @@ formatters.setup({
 			"typescript",
 			"vue",
 			"html",
-			"markdown",
 			"vimwiki",
 			"graphql",
 			"json",
 		},
 		command = "prettier",
 	},
+	{ filetypes = { "markdown" }, command = "prettier" }, -- 不能和上面并在一起, 会无法生效
 	{ filetypes = { "zsh" }, command = "shfmt" }, -- brew install shfmt
 	{ filetypes = { "lua" }, command = "stylua" },
 	{ filetypes = { "python" }, command = "autopep8" }, -- brew install autopep8
