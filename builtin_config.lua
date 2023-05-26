@@ -3,13 +3,14 @@ lvim.builtin.autopairs.active = false
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
--- 关闭愚蠢的下划线插件, 改回 Visual 高亮
-lvim.builtin.illuminate.active = true
-lvim.builtin.illuminate.on_config_done = function(illuminate)
-	vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
-	vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
-	vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
-end
+-- 关闭愚蠢的选中显示下划线插件
+lvim.builtin.illuminate.active = false
+-- 改回 Visual 高亮
+--lvim.builtin.illuminate.on_config_done = function(illuminate)
+--	vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
+--	vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
+--	vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
+--end
 
 lvim.builtin.terminal.active = true
 
