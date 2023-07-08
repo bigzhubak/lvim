@@ -3,6 +3,7 @@
 -- :Lazy update
 local home = os.getenv("HOME")
 lvim.plugins = {
+	{ "folke/noice.nvim", enabled = false },
 	{ "vim-scripts/plsql.vim" },
 	{ "github/copilot.vim" }, -- copilot
 	-- { "Exafunction/codeium.vim" }, -- codeium
@@ -94,7 +95,6 @@ lvim.plugins = {
 			})
 		end,
 	},
-	--{ "vimwiki/vimwiki" },
 	{ "edluffy/hologram.nvim" },
 	-- 更好的显示代码结构,并且自动打开
 	{
